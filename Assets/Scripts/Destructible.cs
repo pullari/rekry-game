@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
+    public bool DEBUG;
+    public float startingHP;
     public FloatVar HP;
     public DamageTypeArray weaknesses;
     public GameEvent destructionEvent;
     public bool destroyAfterDeath;
 
-    public void TakeDamage(float damage)
+    private void Start()
     {
+        HP.Value = startingHP;
+    }
+
+    public void TakeDamage(Damaging damagedBy)
+    {
+        float damage = damagedBy.damage.Value;
+
         if (!HP)
         {
-            Destroy();
+            Destroy(damagedBy);
             return;
         }
-
+        
         HP.Value -= damage;
 
-        if (HP.Value < 0)
+        if (HP.Value <= 0)
         {
-            Destroy();
+            HP.Value = 0;
+            Destroy(damagedBy);
         }
     }
 
@@ -35,14 +45,14 @@ public class Destructible : MonoBehaviour
             {
                 if (weaknesses.arr[i] == damageComponent.type) 
                 {
-                    TakeDamage(damageComponent.damage.Value);
+                    TakeDamage(damageComponent);
                     damageComponent.ObjectWasHit();
                 }
             }
         }
     }
 
-    public virtual void Destroy()
+    public virtual void Destroy(Damaging destroyedBy)
     {
         if(destructionEvent) destructionEvent.Raise();
         if (destroyAfterDeath)

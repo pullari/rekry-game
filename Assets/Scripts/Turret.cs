@@ -15,7 +15,7 @@ public struct FireCommand
 }
 
 // This class could be defined in a separate script but as it is only needed in Turret I do it here.
-[CreateAssetMenu(menuName = "ScriptableObjects/FireCommandQueue")]
+[CreateAssetMenu(menuName = "FireCommandQueue")]
 public class FireCommandQueue : SOQueue<FireCommand> { }
 
 public class Turret : Vector3Listener

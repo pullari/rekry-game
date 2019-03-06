@@ -11,6 +11,11 @@ public class SceneManaging : MonoBehaviour
         SceneManager.LoadSceneAsync("UIScene", LoadSceneMode.Additive);
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR

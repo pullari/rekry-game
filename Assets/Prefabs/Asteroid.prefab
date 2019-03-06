@@ -104,11 +104,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5185066669389240067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d73250390e6ea4e90e0acc299382d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fc31f4a8c0e31840ac452ace3e49f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 5
-  direction: {x: 0, y: 0, z: -1}
+  velocity: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!54 &5185066669389240088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c1704b27085394a9d61659a887f5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 0
+  startingHP: 0
   HP: {fileID: 11400000, guid: 3af2ac613db820c48ba3ccb5575dfa98, type: 2}
   weaknesses: {fileID: 11400000, guid: 9949f10b86b742949b87f79a53a47f00, type: 2}
   destructionEvent: {fileID: 11400000, guid: 3dc3fb2482e69394a9592b982261726d, type: 2}

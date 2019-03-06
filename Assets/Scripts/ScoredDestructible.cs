@@ -7,13 +7,12 @@ public class ScoredDestructible : Destructible
     public IntVar scoreAmount;
     public IntEvent scoreEvent;
 
-    public override void Destroy()
+    public override void Destroy(Damaging destroyedBy)
     {
         if (destructionEvent) destructionEvent.Raise();
-        if (scoreEvent)
-        {
-            scoreEvent.RaiseEvent(scoreAmount.Value);
-        }
+
+        // Make sure scoring event exists and that object was destroyed by player
+        if (scoreEvent && destroyedBy.type == DamageType.PlayerDamage) scoreEvent.RaiseEvent(scoreAmount.Value);
 
         gameObject.SetActive(false);
 

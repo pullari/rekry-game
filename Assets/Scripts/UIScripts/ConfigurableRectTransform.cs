@@ -11,6 +11,11 @@ public class ConfigurableRectTransform : MonoBehaviour
     public Vector2Var size;
     RectTransform rt;
 
+    public bool scaleAccordingToScreenSize = true;
+    [Tooltip("This is used to scale the ui elements to the screen size")]
+    public float defaultScreenSizeX = 1920;
+    public float defaultScreenSizeY = 1080;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,11 @@ public class ConfigurableRectTransform : MonoBehaviour
         {
             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size.Value.x);
             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.Value.y);
+
+            if (scaleAccordingToScreenSize)
+            {
+                rt.localScale = new Vector3(Screen.width / defaultScreenSizeX, Screen.height / defaultScreenSizeY, 1);
+            }
         }
     }
 }

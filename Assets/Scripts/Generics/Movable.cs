@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class Movable : MonoBehaviour
 {
+    [Tooltip("Some spawners override velocity and direction")]
     public float velocity;
+    [Tooltip("Some spawners override velocity and direction")]
     public Vector3 direction;
 
     // Update is called once per frame
