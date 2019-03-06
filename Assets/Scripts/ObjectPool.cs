@@ -59,9 +59,6 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < pool.Count; i++)
         {
-            Renderer rend = pool[i].GetComponent<Renderer>();
-
-            if (rend && !rend.isVisible) return pool[i];
             if (!pool[i].activeInHierarchy) return pool[i];
         }
         

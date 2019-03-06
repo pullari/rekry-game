@@ -12,8 +12,7 @@ public class GameObjectSpawner : MonoBehaviour
 
     CooledDown cooledDown;
     ObjectPool spawnablePool;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +44,7 @@ public class GameObjectSpawner : MonoBehaviour
     void Generate()
     {
         GameObject spawned = isPooled ? spawnablePool.GetObject() : Instantiate(spawnable);
+        Debug.Log(spawned);
         spawned.transform.position = transform.position;
         spawned.SetActive(true);
     }
